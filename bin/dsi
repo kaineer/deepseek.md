@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+BIN=$(readlink -f $0)
+DIR=$(dirname $BIN)
+BASE_BIN=$(basename $BIN)
+
+# This block is used until script is made usable
+#
+if [[ "$DEBUG" == "yes" ]]; then
+  echo "Deepseek import"
+  echo "Running $BIN"
+  echo "Running script $BASE_BIN from $DIR"
+fi
