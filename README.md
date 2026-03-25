@@ -14,7 +14,7 @@
 ├── sessions/
 │   └── <session_uuid>/
 │       ├── session.md     # метаданные сессии + оглавление
-│       └── <turn_uuid>.md # отдельный файл для каждого оборота
+│       └── <turn_uuid>.md # отдельный файл для каждой реплики
 └── tags/
     └── <tag_slug>/
         └── <turn_uuid>.md -> ../../sessions/.../turn.md
@@ -47,7 +47,7 @@
   "updated": "<ISO 8601 timestamp последнего сообщения>",
   "turns": [
     {
-      "uuid": "<UUID v4 для этого оборота>",
+      "uuid": "<UUID v4 для этой реплики>",
       "timestamp": "<ISO 8601 timestamp вопроса>",
       "request": "<текст вопроса пользователя>",
       "response": "<текст ответа ассистента>",
@@ -77,7 +77,7 @@
 1. Извлечёт JSON из буфера обмена
 2. Сохранит сырую копию в `tmp/`
 3. Проверит валидность JSON и наличие обязательных полей
-4. Создаст структуру `sessions/<uuid>/` и файлы оборотов
+4. Создаст структуру `sessions/<uuid>/` и файлы реплик
 5. Создаст символьные ссылки в `tags/<tag>/`
 
 ## Формат файлов
@@ -140,14 +140,12 @@ tags/technology/<turn_uuid>.md -> ../../sessions/<session_uuid>/<turn_uuid>.md
 
 ### Пример Dataview-запроса
 
-````markdown
 ```dataview
 TABLE timestamp, tags
 FROM "sessions"
 WHERE contains(tags, "linux")
 SORT timestamp DESC
 ```
-````
 
 ## Обработка дубликатов
 
