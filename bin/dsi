@@ -11,3 +11,7 @@ if [[ "$DEBUG" == "yes" ]]; then
   echo "Running $BIN"
   echo "Running script $BASE_BIN from $DIR"
 fi
+
+case "$1" in
+"import") cat $DIR/prompts/import.txt | xsel -ib ;;
+esac
